@@ -39,6 +39,24 @@ public class UserTest
 	this.target.book(new Booking[]{new Flight(StartDate, EndDate, 100), new Hotel(5), new Car(3)});
 	assertEquals(1024.65,this.target.Price(), 0.01);
 	}
+	
+	@Test
+	public void TestThatDiscountFails1()
+	{
+	Discount target = new Discount(0.02, 1000000000);
+	ServiceLocator.Instance().AddDiscount(target);
+	this.target.book(new Booking[]{new Flight(StartDate, EndDate, 100), new Hotel(5), new Car(3)});
+	assertEquals(1024.65,this.target.Price(), 0.01);
+	}	
+	
+	@Test
+	public void TestThatDiscountFails2()
+	{
+	Discount target = new Discount(-0.01, 1);
+	ServiceLocator.Instance().AddDiscount(target);
+	this.target.book(new Booking[]{new Flight(StartDate, EndDate, 100), new Hotel(5), new Car(3)});
+	assertEquals(1024.65,this.target.Price(), 0.01);
+	}
 
 	@Test
 	public void TestThatUserHasZeroFrequentFlierMilesOnInit()
