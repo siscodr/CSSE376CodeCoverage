@@ -48,6 +48,12 @@ public class HotelTest
 	{
 		new Hotel(-5);
 	}
+	
+	@Test
+	public void TestHotelResultsInZeroMiles(){
+		Hotel target = new Hotel(10);
+		Assert.assertEquals(0, target.getMiles());
+	}
 
 	
 	@Test
@@ -90,27 +96,27 @@ public class HotelTest
 //    @Test
 //    public void TestThatHotelDoesGetRoomCountFromDatabase()
 //    {
-//    	IDatabase mockDB = EasyMock.createStrictMock(IDatabase.class);
+//    	IDatabase mockDB = EasyMock.createNiceMock(IDatabase.class);
 //        List<String> Rooms = new LinkedList<String>();
 //        for (int i = 0; i < 100; i++)
 //        {
-//            Rooms.add(i);
+//            Rooms.add(i, "");;
 //        }
 //
 //        // FIXME: what is the EasyMock equivalent, if any?
 //        //EasyMock.expect(mockDB.Rooms).PropertyBehavior();
-//
+//        
 //        EasyMock.replay(mockDB);
 //
 //        mockDB.Rooms = Rooms;
 //
 //
-//        var target = new Hotel(10);
-//        target.Database = mockDatabase;
+//        Hotel target = new Hotel(10);
+//        target.Database = mockDB;
 //
-//        int roomCount = target.AvailableRooms;
-//        Assert.AreEqual(Rooms.Count, roomCount);
+//        int roomCount = target.AvailableRooms();
+//        Assert.assertEquals(Rooms.size(), roomCount);
 //
-//        mocks.VerifyAll();
+//        EasyMock.verify(mockDB);
 //    }
 }
